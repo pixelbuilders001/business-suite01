@@ -1,0 +1,26 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#F8F8F5"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.4"/>
+  <defs>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" stroke="#176B50" stroke-width="0.5" opacity="0.15"/>
+    </pattern>
+  </defs>
+
+  <g transform="translate(80, 200)">
+    <rect width="56" height="56" rx="14" fill="#176B50"/>
+    <path d="M16 16L28 34L40 16" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="74" y="38" font-family="Fraunces, Georgia, serif" font-size="36" font-weight="600" fill="#171717">Vyāpār Suite</text>
+  </g>
+
+  <text x="80" y="320" font-family="Fraunces, Georgia, serif" font-size="64" font-weight="600" fill="#171717">Your business.</text>
+  <text x="80" y="392" font-family="Fraunces, Georgia, serif" font-size="64" font-weight="600" fill="#176B50">Better connected.</text>
+
+  <text x="80" y="450" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="400" fill="#686868">Billing software, barcode POS, retail inventory management,</text>
+  <text x="80" y="480" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="400" fill="#686868">and an online storefront — built for growing businesses in India.</text>
+
+  <rect x="80" y="520" width="180" height="48" rx="24" fill="#176B50"/>
+  <text x="170" y="550" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="600" fill="white" text-anchor="middle">Book a Free Demo</text>
+
+  <circle cx="1080" cy="315" r="220" fill="#176B50" opacity="0.04"/>
+</svg>
