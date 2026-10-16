@@ -2,11 +2,18 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ScanLine, Plus, Check, Printer } from 'lucide-react';
 import { products } from '@/config/products';
-import { ScreenshotPlaceholder } from '@/components/ui/ScreenshotPlaceholder';
+import { ScreenshotFrame } from '@/components/ui/ScreenshotFrame';
 import type { ProductStep } from '@/config/products';
 import type { LucideIcon } from 'lucide-react';
 
 const stepIcons: LucideIcon[] = [ScanLine, Plus, Check, Printer];
+
+const stepScreenshots = [
+  { src: '/pos-scanner.png', alt: 'Step 1 — Barcode Scanner & Lookup' },
+  { src: '/06-in-store-pos-sales.jpg', alt: 'Step 2 — Counter Billing & Cart' },
+  { src: '/04-payment---qr-workflow.jpg', alt: 'Step 3 — QR & UPI Payment' },
+  { src: '/billtoprint-pos.png', alt: 'Step 4 — Printable Bill & Invoice' },
+];
 
 export function BarcodePosSequence() {
   const posProduct = products.find((p) => p.id === 'barcode-pos')!;
@@ -32,13 +39,16 @@ export function BarcodePosSequence() {
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Left: screenshot */}
             <div className="relative hidden lg:block">
-              <motion.div style={{ y: screenshotY }}>
-                <ScreenshotPlaceholder
-                  label="Barcode POS Interface"
-                  sublabel="Sticky scroll showcase — replace with real POS screenshots"
-                  dark={true}
-                  className="shadow-2xl shadow-black/30"
-                />
+              <motion.div style={{ y: screenshotY }} className="relative">
+                {stepScreenshots.map((item, idx) => (
+                  <StepScreenshotItem
+                    key={item.src}
+                    image={item}
+                    index={idx}
+                    total={stepCount}
+                    progress={scrollYProgress}
+                  />
+                ))}
               </motion.div>
             </div>
 
@@ -110,6 +120,52 @@ function StepItem({
         <p className="mt-1 text-base font-semibold text-white">{step.title}</p>
         <p className="mt-1 text-sm leading-relaxed text-white/60">{step.description}</p>
       </div>
+    </motion.div>
+  );
+}
+
+function StepScreenshotItem({
+  image,
+  index,
+  total,
+  progress,
+}: {
+  image: { src: string; alt: string };
+  index: number;
+  total: number;
+  progress: ReturnType<typeof useScroll>['scrollYProgress'];
+}) {
+  const segment = 1 / total;
+  const start = index * segment;
+  const end = (index + 1) * segment;
+
+  const inputRange =
+    index === 0
+      ? [0, end * 0.7, end]
+      : index === total - 1
+      ? [start - segment * 0.3, start + segment * 0.2, 1]
+      : [start - segment * 0.3, start, end - segment * 0.3, end];
+
+  const outputRange =
+    index === 0
+      ? [1, 1, 0]
+      : index === total - 1
+      ? [0, 1, 1]
+      : [0, 1, 1, 0];
+
+  const opacity = useTransform(progress, inputRange, outputRange);
+
+  return (
+    <motion.div
+      style={{ opacity }}
+      className={index === 0 ? 'relative' : 'absolute inset-0 pointer-events-none'}
+    >
+      <ScreenshotFrame
+        src={image.src}
+        alt={image.alt}
+        dark={true}
+        className="shadow-2xl shadow-black/40"
+      />
     </motion.div>
   );
 }

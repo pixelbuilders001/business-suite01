@@ -1,7 +1,7 @@
 import { ArrowRight, ArrowDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { siteConfig } from '@/config/site';
-import { ScreenshotPlaceholder } from '@/components/ui/ScreenshotPlaceholder';
+import { ScreenshotFrame } from '@/components/ui/ScreenshotFrame';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -102,11 +102,12 @@ function HeroVisual() {
         transition={{ duration: 1, delay: 0.8, ease }}
         className="relative z-20 mx-auto max-w-4xl"
       >
-        <ScreenshotPlaceholder
-          label="Retail Management Dashboard"
-          sublabel="Primary hero screenshot — replace with actual dashboard"
+        <ScreenshotFrame
+          src="/01-retail-command-center.jpg"
+          alt="Retail Management Dashboard"
           className="shadow-2xl shadow-black/15"
           dark={false}
+          priority={true}
         />
       </motion.div>
 
@@ -115,11 +116,11 @@ function HeroVisual() {
         initial={{ opacity: 0, x: -40, y: 20 }}
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 0.8, delay: 1.0, ease }}
-        className="absolute -left-4 bottom-8 z-30 hidden w-64 lg:block"
+        className="absolute -left-4 bottom-8 z-30 hidden w-72 lg:block"
       >
-        <ScreenshotPlaceholder
-          label="Barcode POS"
-          sublabel="Billing interface"
+        <ScreenshotFrame
+          src="/pos-scanner.png"
+          alt="Barcode POS — Scanner"
           className="shadow-xl shadow-black/20"
           dark={true}
         />
@@ -130,11 +131,11 @@ function HeroVisual() {
         initial={{ opacity: 0, x: 40, y: 20 }}
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 0.8, delay: 1.1, ease }}
-        className="absolute -right-4 top-12 z-30 hidden w-64 lg:block"
+        className="absolute -right-4 top-12 z-30 hidden w-72 lg:block"
       >
-        <ScreenshotPlaceholder
-          label="Online Storefront"
-          sublabel="Product browsing"
+        <ScreenshotFrame
+          src="/storefront-home.png"
+          alt="Online Storefront — Shree Banarasi Sarees"
           className="shadow-xl shadow-black/20"
           dark={false}
         />
@@ -145,11 +146,11 @@ function HeroVisual() {
         initial={{ opacity: 0, x: 30, y: 30 }}
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 0.8, delay: 1.2, ease }}
-        className="absolute -right-8 -bottom-6 z-30 hidden w-56 xl:block"
+        className="absolute -right-8 -bottom-6 z-30 hidden w-64 xl:block"
       >
-        <ScreenshotPlaceholder
-          label="GST Invoice"
-          sublabel="Invoice preview"
+        <ScreenshotFrame
+          src="/billtoprint-pos.png"
+          alt="BillToPrint — GST Invoicing"
           className="shadow-xl shadow-black/20"
           dark={false}
         />

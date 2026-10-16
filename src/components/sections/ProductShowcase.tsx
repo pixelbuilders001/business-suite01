@@ -1,7 +1,7 @@
 import { Check, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { ProductConfig } from '@/config/products';
-import { ScreenshotPlaceholder } from '@/components/ui/ScreenshotPlaceholder';
+import { ScreenshotFrame } from '@/components/ui/ScreenshotFrame';
 import { useReveal } from '@/lib/hooks';
 
 interface ProductShowcaseProps {
@@ -98,21 +98,22 @@ export function ProductShowcase({ product, reversed = false }: ProductShowcasePr
             className={reversed ? 'lg:col-start-1 lg:row-start-1' : ''}
           >
             <div className="relative">
-              <ScreenshotPlaceholder
-                label={product.label}
-                sublabel="Replace with actual product screenshot"
+              <ScreenshotFrame
+                src={product.primaryScreenshot}
+                alt={`${product.name} — Main Interface`}
                 dark={isDark}
+                priority={product.id === 'storefront'}
                 className="shadow-2xl shadow-black/15"
               />
 
               {/* Support screenshots */}
               {product.supportScreenshots.length > 0 && (
                 <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                  {product.supportScreenshots.slice(0, 2).map((_, idx) => (
-                    <ScreenshotPlaceholder
+                  {product.supportScreenshots.map((src, idx) => (
+                    <ScreenshotFrame
                       key={idx}
-                      label={`${product.name} — View ${idx + 2}`}
-                      sublabel="Supporting screenshot"
+                      src={src}
+                      alt={`${product.name} — Screen ${idx + 2}`}
                       dark={isDark}
                       className="shadow-lg shadow-black/10"
                     />

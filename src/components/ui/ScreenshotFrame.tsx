@@ -29,12 +29,8 @@ export function ScreenshotFrame({ src, alt, className = '', dark = false, priori
           alt={alt}
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
-          className="w-full h-auto object-contain"
-          aria-describedby={`${id}-note`}
+          className="w-full h-auto object-cover block"
         />
-        <div id={`${id}-note`} className="sr-only">
-          This is a placeholder area for the real product screenshot. Replace the image file to show the actual interface.
-        </div>
       </div>
     </div>
   );

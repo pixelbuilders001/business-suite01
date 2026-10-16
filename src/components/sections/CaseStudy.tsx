@@ -2,7 +2,7 @@ import { Store, ShoppingBag, ScanLine, FileText, ArrowRight } from 'lucide-react
 import { motion } from 'framer-motion';
 import { siteConfig } from '@/config/site';
 import { Reveal } from '@/components/ui/Reveal';
-import { ScreenshotPlaceholder } from '@/components/ui/ScreenshotPlaceholder';
+import { ScreenshotFrame } from '@/components/ui/ScreenshotFrame';
 import { useReveal } from '@/lib/hooks';
 
 const caseStudyPoints = [
@@ -37,9 +37,9 @@ export function CaseStudy() {
             animate={visible ? { opacity: 1, scale: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
-            <ScreenshotPlaceholder
-              label={`${siteConfig.caseStudyBusiness} — Storefront`}
-              sublabel="Replace with actual shop screenshot"
+            <ScreenshotFrame
+              src="/storefront-product.png"
+              alt={`${siteConfig.caseStudyBusiness} — Live Product Storefront`}
               className="shadow-2xl shadow-black/10"
             />
           </motion.div>
